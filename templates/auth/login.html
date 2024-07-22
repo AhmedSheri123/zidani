@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Login Page{% endblock title %}
+
+{% block body %}
+
+<form method='post'>
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Login">
+</form>
+<p class='phaR'>Have no account? <a href="{% url 'register' %}">Register</a></p>
+{% endblock body %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Home Page{% endblock title %}
+
+{% block body %}
+{% for message in messages %}
+
+<div class='message'>
+    <div><p>{{message.date.date}}&nbsp;&nbsp;{{message.date.time.hour|add:'3'}}:{{message.date.time.minute}}</p></div>
+    {% if message.message %}
+    <p class='p'>{{message.message}}</p>
+    {% endif %}
+    {% if message.pdf %}
+    <button><a href='{{message.pdf.url}}' target='_blanck'>{{message.pdf.name|cut:'files/'}}</a></button>
+    {% endif %}
+    <ul>
+        <li><button value='{{message.message}}' class='btn_copy'><span class="material-symbols-outlined">content_copy</span></button></li>
+        {% if request.user.username == 'zidani' %}
+        <li><a href=""><span class="material-symbols-outlined">update</span></a></li>
+        <li><a href=""><span class="material-symbols-outlined">delete</span></a></li>
+        {% endif %}
+    </ul>
+</div>
+
+{% endfor %}
+{% endblock body %}

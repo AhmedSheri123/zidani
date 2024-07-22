@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Edit{% endblock title %}
+
+{% block body %}
+{% if request.user.username == 'zidani' %}
+<form method='post' enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Done">
+</form>
+{% else %}
+<h1>Access Denied</h1>
+<p class='phaR'><a href='/'>Home</a></p>
+{% endif %}
+{% endblock body %}
